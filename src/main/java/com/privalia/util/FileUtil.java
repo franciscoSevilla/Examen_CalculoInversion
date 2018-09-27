@@ -38,14 +38,13 @@ public static synchronized boolean createFile (String fileName) throws IOExcepti
 }
 
 public static synchronized String[] loadCSV(String fileName) throws IOException{
-	  String csvFile = "C:\\Users\\francisco.sevilla\\Downloads\\Examen\\stocks-ITX.csv";
 	   BufferedReader br = null;
 	   String line = "";
 	   String[] datos = null;
 	   //Se define separador ","
-	   String cvsSplitBy = ";";
+	   String cvsSplitBy = ",";
 	   try {
-	       br = new BufferedReader(new FileReader(csvFile));
+	       br = new BufferedReader(new FileReader(fileName));
 	       while ((line = br.readLine()) != null) {                
 	           datos = line.split(cvsSplitBy);
 	           //Imprime datos.
