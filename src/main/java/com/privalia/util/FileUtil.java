@@ -3,7 +3,10 @@ package com.privalia.util;
 
 import lombok.extern.log4j.Log4j;
 
+import java.awt.List;
 import java.io.*;
+import java.sql.Date;
+import java.util.Calendar;
 
 @Log4j
 public class FileUtil {
@@ -40,7 +43,7 @@ public static synchronized String[] loadCSV(String fileName) throws IOException{
 	   String line = "";
 	   String[] datos = null;
 	   //Se define separador ","
-	   String cvsSplitBy = ",";
+	   String cvsSplitBy = ";";
 	   try {
 	       br = new BufferedReader(new FileReader(csvFile));
 	       while ((line = br.readLine()) != null) {                
@@ -67,6 +70,17 @@ public static synchronized String[] loadCSV(String fileName) throws IOException{
   
 	
 }
+
+public static int getLastThursday( int month, int year ) {
+	   Calendar cal = Calendar.getInstance();
+	   cal.set( year, month , 1 );
+	   cal.add( Calendar.DAY_OF_MONTH, -( cal.get( Calendar.DAY_OF_WEEK ) % 7 + 2 ) );
+	   System.out.println(cal.getTime());
+	   return  cal.get(Calendar.DAY_OF_MONTH);
+	}
+
+
+
 
 public static File getFile() {
 	return file;
